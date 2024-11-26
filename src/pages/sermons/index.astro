@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { formatDate } from '../../utils/dateUtils';
+import sermonsData from '../../content/sermons/sermons.json';
+
+const { sermons } = sermonsData;
+---
+
+<BaseLayout title="Sermons | Our Church">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <h1 class="text-4xl font-bold text-gray-900 mb-8">Sermons</h1>
+    <div class="grid gap-8">
+      {sermons.map((sermon) => (
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <h2 class="text-2xl font-bold text-gray-900">{sermon.title}</h2>
+          <p class="text-gray-600 mt-2">Speaker: {sermon.speaker}</p>
+          <p class="text-gray-500 mt-1">{formatDate(sermon.date)}</p>
+          <p class="mt-4 text-gray-700">{sermon.description}</p>
+          {sermon.videoUrl && (
+            <div class="mt-6">
+              <div class="aspect-w-16 aspect-h-9">
+                <iframe
+                  src={sermon.videoUrl.replace('watch?v=', 'embed/')}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                  class="w-full h-full rounded-lg"
+                ></iframe>
+              </div>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

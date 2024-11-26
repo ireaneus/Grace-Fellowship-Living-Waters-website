@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const ministries = [
+  {
+    slug: 'youth',
+    title: 'Youth Ministry',
+    description: 'Empowering young people to grow in faith',
+    image: '/images/youth.jpg'
+  },
+  {
+    slug: 'worship',
+    title: 'Worship Ministry',
+    description: 'Leading the congregation in worship',
+    image: '/images/worship.jpg'
+  }
+];
+---
+
+<BaseLayout title="Our Ministries">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <h1 class="text-4xl font-bold text-gray-900 mb-8">Our Ministries</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {ministries.map((ministry) => (
+        <a href={`/ministries/${ministry.slug}`} class="block group">
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="aspect-w-16 aspect-h-9 bg-gray-200"></div>
+            <div class="p-6">
+              <h2 class="text-xl font-semibold text-gray-900 group-hover:text-cyan-600">
+                {ministry.title}
+              </h2>
+              <p class="mt-2 text-gray-600">{ministry.description}</p>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

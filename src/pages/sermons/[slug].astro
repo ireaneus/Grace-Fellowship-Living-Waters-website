@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { formatDate } from '../../utils/dateUtils';
+
+export async function getStaticPaths() {
+  const sermons = await getCollection('sermons');
+  return sermons.map(sermon => ({
+    params: { slug: sermon.slug },
+    props: { sermon },
+  }));
+}
+
+const { sermon } = Astro.props;
+---
+
+<BaseLayout title={`${sermon.data.title} | Our Church`}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="max-w-3xl mx-auto">
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">{sermon.data.title}</h1>
+      <div class="mb-8">
+        <p class="text-gray-600">Speaker: {sermon.data.speaker}</p>
+        <p class="text-gray-500">{formatDate(sermon.data.date)}</p>
+      </div>
+      <div class="prose prose-lg mb-8">
+        <p>{sermon.data.description}</p>
+      </div>
+      {sermon.data.videoUrl && (
+        <div class="aspect-w-16 aspect-h-9">
+          <iframe
+            src={sermon.data.videoUrl.replace('watch?v=', 'embed/')}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            class="w-full h-full rounded-lg"
+          ></iframe>
+        </div>
+      )}
+    </div>
+  </div>
+</BaseLayout>
