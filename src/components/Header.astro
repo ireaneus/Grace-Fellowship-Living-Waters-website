@@ -10,20 +10,20 @@ const navigation = [
 ---
 
 <header class="relative">
-  <div class="header-background shadow-lg">
+  <div class="nav-container shadow-lg">
     <div class="relative overflow-hidden">
-      <div class="absolute inset-0 bg-cyan-900/50 backdrop-blur-sm"></div>
+      <div class="absolute inset-0 backdrop-blur-sm"></div>
       <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative" aria-label="Top">
         <div class="w-full py-6 flex items-center justify-between border-b border-cyan-700/50 lg:border-none">
           <div class="flex items-center">
-            <a href="/" class=" text-2xl text-white">
+            <a href="/" class="nav-header">
               Grace Fellowship of Mountain Home ID
             </a>
             <div class="hidden ml-10 space-x-8 lg:block">
               {navigation.map((link) => (
                 <a 
                   href={link.href} 
-                  class="text-base font-medium hover:text-white transition-colors relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-cyan-100 after:scale-x-0 hover:after:scale-x-100 after:transition-transform"
+                  class="nav-menu hover:text-white transition-colors relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-cyan-100 after:scale-x-0 hover:after:scale-x-100 after:transition-transform"
                 >
                   {link.name}
                 </a>

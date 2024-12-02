@@ -38,7 +38,7 @@ const { title, description = "Grace Fellowship and Living Waters RV" } = Astro.p
     --secondary-color: #1e40af;
     --text-color: #1f2937;
     --background-color: #ffffff;
-    --header-background: #577077;
+    --header-background: #3e585f;
     --nav-text-color: #ffffff;
     --header-text-color: antiquewhite; /* New variable for header text color */
     --dropdown-background: #ffffff;
@@ -55,42 +55,22 @@ const { title, description = "Grace Fellowship and Living Waters RV" } = Astro.p
     background-color: var(--header-background);
     color: var(--header-text-color);
     text-align: center;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    z-index: 1000;
-  }
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
   }
   
   /* Navigation styles */
   .nav-container {
     background-color: var(--header-background);
-    padding: 1rem 0;
   }
   
   .nav-header {
     color: var(--header-text-color);
-    margin: 0 0 1rem 0;
-    font-size: larger;
-    letter-spacing: .50em;
-    font-weight: bold;   /* Optional: make the text bold */
+    background-color: var(--header-background);
+    letter-spacing: .5em;
     text-align: center;
   }
   
   .nav-menu {
     color: var(--header-text-color);
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    justify-content: left;
   }
   
   .dropdown {
@@ -134,7 +114,8 @@ const { title, description = "Grace Fellowship and Living Waters RV" } = Astro.p
   
   /* Content styles */
   .content {
-    padding: 2rem 0;
+    margin: 10px;
+    padding: 5px;
   }
   
   .markdown-content {
