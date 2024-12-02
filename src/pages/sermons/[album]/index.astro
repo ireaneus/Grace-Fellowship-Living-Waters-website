@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SermonCard from '../../../components/SermonCard.astro';
+import { getUniqueAlbums, getSermonsByAlbum } from '../../../utils/sermonUtils';
+
+export async function getStaticPaths() {
+  const albums = getUniqueAlbums();
+  return albums.map(album => ({
+    params: { album },
+    props: { sermons: getSermonsByAlbum(album) }
+  }));
+}
+
+const { album } = Astro.params;
+const { sermons } = Astro.props;
+---
+
+<BaseLayout title={`${album} Sermons`}>
+  <main>
+    <div class="header">
+      <a href="/sermons" class="back-button">&larr; Back to Albums</a>
+      <h1>{album} Sermons</h1>
+    </div>
+
+    <div class="sermon-list">
+      {sermons.map(sermon => (
+        <SermonCard sermon={sermon} />
+      ))}
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  main {
+    margin: auto;
+    padding: 2rem;
+    max-width: 1200px;
+    background-color: white;
+    min-height: 100vh;
+  }
+
+  .header {
+    margin-bottom: 2rem;
+  }
+
+  .back-button {
+    display: inline-block;
+    color: #666;
+    text-decoration: none;
+    margin-bottom: 1rem;
+    transition: color 0.2s;
+  }
+
+  .back-button:hover {
+    color: #333;
+  }
+
+  h1 {
+    color: #333;
+    margin: 0;
+  }
+
+  .sermon-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+</style>

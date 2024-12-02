@@ -1,0 +1,44 @@
+---
+interface Props {
+  album: string;
+  sermonCount: number;
+}
+
+const { album, sermonCount } = Astro.props;
+---
+
+<a href={`/sermons/${album}`} class="album-card">
+  <h2>{album}</h2>
+  <p class="sermon-count">{sermonCount} {sermonCount === 1 ? 'sermon' : 'sermons'}</p>
+</a>
+
+<style>
+  .album-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    color: #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid #eee;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: block;
+  }
+
+  .album-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  h2 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.5rem;
+    color: rgb(var(--accent));
+  }
+
+  .sermon-count {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+  }
+</style>

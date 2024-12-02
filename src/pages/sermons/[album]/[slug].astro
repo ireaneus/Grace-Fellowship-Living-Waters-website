@@ -1,22 +1,30 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getSermonBySlug, getPdfUrl, getAudioUrl } from '../../utils/sermonUtils';
+import Layout from '../../../layouts/Layout.astro';
+import { getUniqueAlbums, getSermonsByAlbum, getSermonBySlug, getPdfUrl, getAudioUrl } from '../../../utils/sermonUtils';
 
-const { slug } = Astro.params;
-const sermon = getSermonBySlug(slug || '');
-
-if (!sermon) {
-  return Astro.redirect('/sermons');
+export async function getStaticPaths() {
+  const albums = getUniqueAlbums();
+  return albums.flatMap(album => {
+    const sermons = getSermonsByAlbum(album);
+    return sermons.map(sermon => ({
+      params: {
+        album,
+        slug: sermon.name.replace('.mp3', '')
+      },
+      props: { sermon }
+    }));
+  });
 }
 
+const { sermon } = Astro.props;
 const pdfUrl = getPdfUrl(sermon);
 const audioUrl = getAudioUrl(sermon);
 ---
 
-<BaseLayout title={sermon.title}>
+<Layout title={sermon.title}>
   <main>
     <div class="sermon-detail">
-      <a href="/sermons" class="back-button">&larr; Back to Sermons</a>
+      <a href={`/sermons/${sermon.album}`} class="back-button">&larr; Back to {sermon.album}</a>
       
       <h1>{sermon.title}</h1>
       <div class="sermon-info">
@@ -46,7 +54,7 @@ const audioUrl = getAudioUrl(sermon);
       </div>
     </div>
   </main>
-</BaseLayout>
+</Layout>
 
 <style>
   main {
