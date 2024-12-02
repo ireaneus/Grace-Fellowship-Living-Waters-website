@@ -1,26 +1,26 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import Layout from '../../layouts/BaseLayout.astro';
 import AlbumCard from '../../components/AlbumCard.astro';
-import { getUniqueAlbums, getSermonsByAlbum } from '../../utils/sermonUtils';
+import { getAllAlbums, getSermonsByAlbum } from '../../utils/sermonUtils';
 
-const albums = getUniqueAlbums();
-const albumCounts = albums.map(album => ({
+const albums = getAllAlbums();
+const albumsWithCounts = albums.map(album => ({
   album,
-  count: getSermonsByAlbum(album).length
+  count: getSermonsByAlbum(album.id).length
 }));
 ---
 
-<BaseLayout title="Sermon Albums">
+<Layout title="Sermon Albums">
   <main>
     <h1>Sermon Albums</h1>
     
     <div class="album-grid">
-      {albumCounts.map(({ album, count }) => (
+      {albumsWithCounts.map(({ album, count }) => (
         <AlbumCard album={album} sermonCount={count} />
       ))}
     </div>
   </main>
-</BaseLayout>
+</Layout>
 
 <style>
   main {
@@ -39,7 +39,7 @@ const albumCounts = albums.map(album => ({
 
   .album-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 2rem;
     padding: 1rem;
   }

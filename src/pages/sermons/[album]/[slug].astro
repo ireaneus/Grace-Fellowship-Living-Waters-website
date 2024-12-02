@@ -1,6 +1,6 @@
 ---
-import Layout from '../../../layouts/Layout.astro';
-import { getUniqueAlbums, getSermonsByAlbum, getSermonBySlug, getPdfUrl, getAudioUrl } from '../../../utils/sermonUtils';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getUniqueAlbums, getSermonsByAlbum, getSermonBySlug, getPdfUrl, getAudioUrl, getImageUrl } from '../../../utils/sermonUtils';
 
 export async function getStaticPaths() {
   const albums = getUniqueAlbums();
@@ -19,13 +19,20 @@ export async function getStaticPaths() {
 const { sermon } = Astro.props;
 const pdfUrl = getPdfUrl(sermon);
 const audioUrl = getAudioUrl(sermon);
+const imageUrl = getImageUrl(sermon);
 ---
 
-<Layout title={sermon.title}>
+<BaseLayout title={sermon.title}>
   <main>
     <div class="sermon-detail">
       <a href={`/sermons/${sermon.album}`} class="back-button">&larr; Back to {sermon.album}</a>
       
+      {imageUrl && (
+        <div class="sermon-image">
+          <img src={imageUrl} alt={sermon.title} />
+        </div>
+      )}
+
       <h1>{sermon.title}</h1>
       <div class="sermon-info">
         <p class="speaker">{sermon.speaker}</p>
@@ -54,7 +61,7 @@ const audioUrl = getAudioUrl(sermon);
       </div>
     </div>
   </main>
-</Layout>
+</BaseLayout>
 
 <style>
   main {
@@ -72,6 +79,19 @@ const audioUrl = getAudioUrl(sermon);
     color: #333;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border: 1px solid #eee;
+  }
+
+  .sermon-image {
+    margin: -2rem -2rem 2rem -2rem;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .sermon-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .back-button {

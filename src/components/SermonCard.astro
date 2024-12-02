@@ -1,5 +1,6 @@
 ---
 import type { Sermon } from '../content/sermons/sermons';
+import { getImageUrl } from '../utils/sermonUtils';
 
 interface Props {
   sermon: Sermon;
@@ -7,27 +8,35 @@ interface Props {
 
 const { sermon } = Astro.props;
 const sermonSlug = sermon.name.replace('.mp3', '');
+const imageUrl = getImageUrl(sermon);
 ---
 
 <div class="sermon-card">
-  <h2>{sermon.title}</h2>
-  <p class="speaker">{sermon.speaker}</p>
-  <p class="date">{sermon.date}</p>
-  {sermon.description && <p class="description">{sermon.description}</p>}
-  <div class="card-actions">
-    <a href={`/sermons/${sermonSlug}`} class="listen-button">
-      Listen to Sermon
-    </a>
-    {sermon.pdf && (
-      <a 
-        href={`/${sermon.path}${sermon.pdf}`} 
-        class="pdf-button" 
-        target="_blank" 
-        rel="noopener noreferrer"
-      >
-        View PDF
+  {imageUrl && (
+    <div class="sermon-image">
+      <img src={imageUrl} alt={sermon.title} />
+    </div>
+  )}
+  <div class="sermon-content">
+    <h2>{sermon.title}</h2>
+    <p class="speaker">{sermon.speaker}</p>
+    <p class="date">{sermon.date}</p>
+    {sermon.description && <p class="description">{sermon.description}</p>}
+    <div class="card-actions">
+      <a href={`/sermons/${sermon.album}/${sermonSlug}`} class="listen-button">
+        Listen to Sermon
       </a>
-    )}
+      {sermon.pdf && (
+        <a 
+          href={`/${sermon.path}${sermon.pdf}`} 
+          class="pdf-button" 
+          target="_blank" 
+          rel="noopener noreferrer"
+        >
+          View PDF
+        </a>
+      )}
+    </div>
   </div>
 </div>
 
@@ -39,6 +48,28 @@ const sermonSlug = sermon.name.replace('.mp3', '');
     color: #333;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .sermon-image {
+    margin: -1.5rem -1.5rem 1.5rem -1.5rem;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .sermon-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .sermon-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
   }
 
   h2 {
@@ -56,34 +87,36 @@ const sermonSlug = sermon.name.replace('.mp3', '');
     margin: 1rem 0;
     font-style: italic;
     color: #444;
+    flex: 1;
   }
 
   .card-actions {
     display: flex;
     gap: 1rem;
-    margin-top: 1rem;
+    margin-top: auto;
+    padding-top: 1rem;
   }
 
-  .listen-button, .pdf-button {
+  .listen-button {
+    background: #5e3e3e;
+    color: white;
     display: inline-block;
     padding: 0.5rem 1rem;
     text-decoration: none;
     border-radius: 4px;
-    transition: background-color 0.2s;
-  }
-
-  .listen-button {
-    background: rgb(var(--accent));
-    color: white;
   }
 
   .pdf-button {
     background: #e53e3e;
     color: white;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 4px;
   }
 
   .listen-button:hover {
-    background: rgb(var(--accent-dark));
+    background: #666;
   }
 
   .pdf-button:hover {
