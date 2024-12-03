@@ -7,7 +7,6 @@ export interface Sermon {
     path: string;
     description?: string;
     pdf?: string;
-    jpg?: string;
   }
   
   export const sermons: Sermon[] = [  
@@ -1915,7 +1914,6 @@ export interface Sermon {
 				"name": "gospelinthestars-part4.mp3",
 				"path": "sermons/gospel-stars/",
 				"pdf": "THE-TWELVE-SIGNS.pdf",
-				"jpg": "12SIGNS.jpg"
 			},
 			{
 				"title": "Gospel in the Stars Part 5",
@@ -1965,7 +1963,6 @@ export interface Sermon {
 				"name": "",
 				"path": "sermons/gospel-stars/",
 				"pdf": "AQUARIUS.pdf",
-				"jpg": "AQUARIUS.jpg"
 			},
 			{
 				"title": "ARIES (No MP3)",
@@ -1975,7 +1972,6 @@ export interface Sermon {
 				"name": "",
 				"path": "sermons/gospel-stars/",
 				"pdf": "ARIES.pdf",
-				"jpg": "ARIES.jpg"
 			},
 			{
 				"title": "CANCER (No MP3)",
@@ -1995,7 +1991,6 @@ export interface Sermon {
 				"name": "",
 				"path": "sermons/gospel-stars/",
 				"pdf": "CAPRICORN.pdf",
-				"jpg": "CAPRICORN.jpg"
 			},
 			{
 				"title": "GEMINI (No MP3)",
@@ -2005,7 +2000,6 @@ export interface Sermon {
 				"name": "",
 				"path": "sermons/gospel-stars/",
 				"pdf": "GEMINI.pdf",
-				"jpg": "GEMINI.jpg"
 			},
 			{
 				"title": "LEO (No MP3)",
@@ -2015,7 +2009,6 @@ export interface Sermon {
 				"name": "",
 				"path": "sermons/gospel-stars/",
 				"pdf": "LEO.pdf",
-				"jpg": "LEO.jpg"
 			},
 			{
 				"title": "LIBRA (No MP3)",
@@ -2025,7 +2018,6 @@ export interface Sermon {
 				"name": "",
 				"path": "sermons/gospel-stars/",
 				"pdf": "LIBRA.pdf",
-				"jpg": "LIBRA.jpg"
 			},
 			{
 				"title": "PISCES (No MP3)",
@@ -2035,7 +2027,6 @@ export interface Sermon {
 				"name": "",
 				"path": "sermons/gospel-stars/",
 				"pdf": "PISCES.pdf",
-				"jpg": "PISCES.jpg"
 			},
 			{
 				"title": "SAGITTARIUS (No MP3)",
@@ -2045,7 +2036,6 @@ export interface Sermon {
 				"name": "",
 				"path": "sermons/gospel-stars/",
 				"pdf": "SAGITTARIUS.pdf",
-				"jpg": "SAGITTARIUS.jpg"
 			},
 			{
 				"title": "SCORPIO (No MP3)",
@@ -2055,7 +2045,6 @@ export interface Sermon {
 				"name": "",
 				"path": "sermons/gospel-stars/",
 				"pdf": "SCORPIO.pdf",
-				"jpg": "SCORPIO.jpg"
 			},
 			{
 				"title": "TAURUS (No MP3)",
@@ -2065,7 +2054,6 @@ export interface Sermon {
 				"name": "gospelinthestars-part8.mp3",
 				"path": "sermons/gospel-stars/",
 				"pdf": "TAURUS.pdf",
-				"jpg": "TAURUS.jpg"
 			},
 			{
 				"title": "VIRGO (No MP3)",
@@ -2075,7 +2063,6 @@ export interface Sermon {
 				"name": "gospelinthestars-part8.mp3",
 				"path": "sermons/gospel-stars/",
 				"pdf": "VIRGO.pdf",
-				"jpg": "VIRGO.jpg"
 			},
 			{
 				"title": "Habakkuk Part 1",
@@ -3176,7 +3163,7 @@ export interface Sermon {
 			{
 				"title": "Baptism Three yet One",
 				"speaker": "Pastor Jack Hurley",
-				"album": "topical",
+				"album": "Topical",
 				"date": "Sept",
 				"name": "baptism-three-yet-one.mp3",
 				"path": "sermons/topical/"
@@ -3404,7 +3391,7 @@ export interface Sermon {
 			{
 				"title": "New Life in the New date",
 				"speaker": "Pastor Jack Hurley",
-				"album": "Topical - New date",
+				"album": "Topical",
 				"date": "1995",
 				"name": "new-life-in-the-new-date.mp3",
 				"path": "sermons/topical/"
@@ -3498,7 +3485,7 @@ export interface Sermon {
 			{
 				"title": "Vacation Bible School Skit",
 				"speaker": "Grace Fellowship Court Jesters",
-				"album": "Grace Fellowship Vacation Bible School 1999",
+				"album": "Topical",
 				"date": "1999",
 				"name": "vacatiom-bible-skit.mp3",
 				"path": "sermons/topical/"
@@ -3552,7 +3539,7 @@ export interface Sermon {
 			{
 				"title": "Distracting thoughts",
 				"speaker": "Pastor Jack Hurley",
-				"album": "Topical - New date",
+				"album": "Topical",
 				"date": "2000",
 				"name": "distracting-thoughts.mp3",
 				"path": "sermons/topical/"
