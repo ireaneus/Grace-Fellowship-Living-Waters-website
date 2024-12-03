@@ -1,5 +1,5 @@
 ---
-import Layout from '../../layouts/BaseLayout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSermonBySlug, getPdfUrl, getAudioUrl } from '../../utils/sermonUtils';
 
 const { slug } = Astro.params;
@@ -13,7 +13,7 @@ const pdfUrl = getPdfUrl(sermon);
 const audioUrl = getAudioUrl(sermon);
 ---
 
-<Layout title={sermon.title}>
+<BaseLayout title={sermon.title}>
   <main>
     <div class="sermon-detail">
       <a href="/sermons" class="back-button">&larr; Back to Sermons</a>
@@ -46,7 +46,7 @@ const audioUrl = getAudioUrl(sermon);
       </div>
     </div>
   </main>
-</Layout>
+</BaseLayout>
 
 <style>
   main {

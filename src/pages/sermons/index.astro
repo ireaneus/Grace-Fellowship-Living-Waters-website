@@ -1,5 +1,5 @@
 ---
-import Layout from '../../layouts/BaseLayout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import AlbumCard from '../../components/AlbumCard.astro';
 import { getAllAlbums, getSermonsByAlbum } from '../../utils/sermonUtils';
 
@@ -10,7 +10,7 @@ const albumsWithCounts = albums.map(album => ({
 }));
 ---
 
-<Layout title="Sermon Albums">
+<BaseLayout title="Sermon Albums">
   <main>
     <h1>Sermon Albums</h1>
     
@@ -20,7 +20,7 @@ const albumsWithCounts = albums.map(album => ({
       ))}
     </div>
   </main>
-</Layout>
+</BaseLayout>
 
 <style>
   main {

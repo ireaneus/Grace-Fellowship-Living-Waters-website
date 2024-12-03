@@ -1,5 +1,5 @@
 ---
-import Layout from '../../../layouts/BaseLayout.astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
 import SermonCard from '../../../components/SermonCard.astro';
 import { getUniqueAlbums, getSermonsByAlbum, getAlbumInfo } from '../../../utils/sermonUtils';
 
@@ -18,7 +18,7 @@ const { album } = Astro.params;
 const { sermons, albumInfo } = Astro.props;
 ---
 
-<Layout title={`${albumInfo?.title || album} Sermons`}>
+<BaseLayout title={`${albumInfo?.title || album} Sermons`}>
   <main>
     <div class="header">
       <a href="/sermons" class="back-button">&larr; Back to Albums</a>
@@ -40,7 +40,7 @@ const { sermons, albumInfo } = Astro.props;
       ))}
     </div>
   </main>
-</Layout>
+</BaseLayout>
 
 <style>
   main {

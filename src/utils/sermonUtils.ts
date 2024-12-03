@@ -22,6 +22,11 @@ export function getAudioUrl(sermon: Sermon): string {
   return `/${sermon.path}${sermon.name}`;
 }
 
+export function getImageUrl(sermon: Sermon): string | null {
+  if (!sermon.jpg) return null;
+  return `/${sermon.path}${sermon.jpg}`;
+}
+
 export function getAlbumInfo(albumId: string): Album | undefined {
   return albums.find(album => album.id === albumId);
 }
