@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import { getUniqueAlbums, getSermonsByAlbum, getSermonBySlug, getPdfUrl, getAudioUrl, getImageUrl } from '../../../utils/sermonUtils';
+import { getUniqueAlbums, getSermonsByAlbum, getPdfUrl, getAudioUrl } from '../../../utils/sermonUtils';
 
 export async function getStaticPaths() {
   const albums = getUniqueAlbums();
@@ -19,20 +19,12 @@ export async function getStaticPaths() {
 const { sermon } = Astro.props;
 const pdfUrl = getPdfUrl(sermon);
 const audioUrl = getAudioUrl(sermon);
-const imageUrl = getImageUrl(sermon);
 ---
 
 <BaseLayout title={sermon.title}>
   <main>
     <div class="sermon-detail">
       <a href={`/sermons/${sermon.album}`} class="back-button">&larr; Back to {sermon.album}</a>
-      
-      {imageUrl && (
-        <div class="sermon-image">
-          <img src={imageUrl} alt={sermon.title} />
-        </div>
-      )}
-
       <h1>{sermon.title}</h1>
       <div class="sermon-info">
         <p class="speaker">{sermon.speaker}</p>

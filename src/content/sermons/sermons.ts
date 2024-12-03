@@ -7,6 +7,7 @@ export interface Sermon {
     path: string;
     description?: string;
     pdf?: string;
+    jpg?: string;
   }
   
   export const sermons: Sermon[] = [  
